@@ -1,0 +1,71 @@
+import "/resources/js/backend/bootstrap.js";
+import "/resources/js/backend/plugins/axios_setup.js";
+import "/resources/js/backend/plugins/sweet_alert.js";
+import { createApp } from "/node_modules/.vite/deps/vue.js?v=59787a25";
+import Dashbord from "/resources/js/backend/views/App.vue";
+
+import DynamicSelect from "/resources/js/backend/views/components/dynamic_select/DynamicSelect.vue";
+import ImageComponent from "/resources/js/backend/views/components/image/ImageComponent.vue";
+
+import { createRouter, createWebHashHistory } from "/node_modules/.vite/deps/vue-router.js?v=59787a25";
+import { createPinia } from "/node_modules/.vite/deps/pinia.js?v=59787a25"
+
+import SuperAdminLayout from "/resources/js/backend/views/pages/superadmin/Layout.vue";
+import SuperAdminDashboard from "/resources/js/backend/views/pages/superadmin/Dashboard.vue";
+import SuperAdminReportAll from "/resources/js/backend/views/pages/superadmin/management/reports/All.vue";
+import SuperAdminUserAll from "/resources/js/backend/views/pages/superadmin/management/users/All.vue";
+
+import App from "/resources/js/backend/views/App.vue"
+import admin_routes from "/resources/js/backend/views/pages/admin/routes.js"
+
+const routes = [
+    {
+        path: '/',
+        component: App,
+    },
+    admin_routes,
+
+    {
+        path: '/super-admin',
+        component: SuperAdminLayout,
+        children: [
+            {
+                path: '',
+                component: SuperAdminDashboard
+            },
+            {
+                path: 'report',
+                name: 'report',
+                component: SuperAdminReportAll
+            },
+            {
+                path: 'user',
+                name: "user",
+                component: SuperAdminUserAll
+            },
+        ]
+    },
+
+];
+
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes, // short for `routes: routes`
+});
+router.beforeEach((to, from, next) => {
+    to.href.length > 2 &&
+        window.sessionStorage.setItem('prevurl', to.href);
+    next();
+});
+
+const pinia = createPinia()
+const app = createApp({});
+
+app.component('dahsboard', Dashbord);
+app.component('dynamicSelect', DynamicSelect);
+app.component('image-component', ImageComponent);
+
+app.use(pinia)
+app.use(router);
+app.mount('#app')
+
