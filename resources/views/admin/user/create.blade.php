@@ -1,53 +1,61 @@
-
-
-@extends('admin.layout.index')
+@extends('admin.index')
 @section('content')
-
-<div layout_title="Product Management">
-    <h3 class="mb-2">Product Management</h3>
-    <div class="container">
-        <div class="card list_card">
-            <div class="card-header">
-                <h4>Create</h4>
-                <div class="btns">
-                    <a href="https://dibyo-bd.com/admin#/product/"
-                        class="btn rounded-pill btn-outline-warning router-link-active">
-                        <i class="fa fa-arrow-left me-5px"></i>
-                        Back
-                    </a>
-                </div>
-            </div>
-            <form action="" method="POST">
-                @csrf
-                <div class="card-body">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12">
-                            <div class="admin_form form_1 d-grid">
-                                <div class="form-group full_width d-grid align-content-start gap-1 mb-2">
-                                    <div class="field_wrapper">
-                                        <label  class="text-capitalize d-block">
-                                            <span class="mb-2 d-block">
-                                                Product Name </span>
-                                            <input type="text"  name="product_name"
-                                                class="form-control" />
-                                            <!---->
-                                        </label>
-                                        <!---->
-                                    </div>
-                                </div>
-                                
-                        </div>
+  
+    <div class="container-fluid" style="margin-top: 100px;">
+        <form action="{{route('admin.user.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="card">
+                <div>
+                    <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
+                        <h6>User Create</h6>
+                        <a href="" class="router-link-active btn btn-info btn-sm">Back</a>
                     </div>
                 </div>
-          
-                <div class="card-footer text-center">
-                    <button type="submit" class="btn btn-outline-info">
-                        <i class="fa fa-upload"></i>
-                        Submit
-                    </button>
+                <div class="card-body">
+                    <div class="form-group col-md-6">
+                        <label for=""> Name </label>
+                        <div class="mt-1 mb-3"><input type="text" name="name" class="form-control mb-1" /></div>
+                        @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for=""> Email </label>
+                        <div class="mt-1 mb-3"><input type="text" name="email" class="form-control mb-1" /></div>
+                        @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for=""> Phon Number </label>
+                        <div class="mt-1 mb-3"><input type="text" name="phone_number" class="form-control mb-1" /></div>
+                        @error('phone_number')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for=""> Password </label>
+                        <div class="mt-1 mb-3"><input type="text" name="password" class="form-control mb-1" /></div>
+                        @error('password')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for=""> Image </label>
+                        <div class="mt-1 mb-3"><input type="file" name="image" class="form-control mb-1" /></div>
+                        @error('image')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
-            </form>
-        </div>
+
+                <div class="card-header py-2 position-sticky d-flex justify-content-start">
+                    <button type="submit" class="btn btn-info btn-sm">Create</button>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 @endsection

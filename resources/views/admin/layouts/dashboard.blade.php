@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- saved from url=(0038)http://127.0.0.1:8000/dashboard#/admin -->
 <html lang="en">
@@ -12,46 +11,55 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{asset('/')}}assets/backend/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('/')}}assets/backend/logo.png" type="image/x-icon">
+    <link rel="icon" href="/assets/backend/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/backend/logo.png" type="image/x-icon">
     <title>Dashbaord</title>
 
     <!--Google font-->
-    <link href="{{asset('/')}}assets/backend/css" rel="stylesheet">
-    <link href="{{asset('/')}}assets/backend/css(1)" rel="stylesheet">
+    <link href="/assets/backend/css" rel="stylesheet">
+    <link href="/assets/backend/css(1)" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/fontawesome.css">
     <!-- ico-font -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/icofont.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/icofont.css">
     <!-- Themify icon -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/themify.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/themify.css">
     <!-- Flag icon -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/flag-icon.css">
     <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/bootstrap.css">
     <!-- App css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/responsive.css">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/pace.css">
-    <script src="{{asset('/')}}assets/backend/sweet_alert.js.download" defer=""></script>
-    <script src="{{asset('/')}}assets/backend/pace.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/pace.css">
+    <script src="/assets/backend/sweet_alert.js.download" defer=""></script>
+    <script src="/assets/backend/pace.js.download"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('/')}}assets/backend/custom.css">
+    <link rel="stylesheet" type="text/css" href="/assets/backend/custom.css">
 
     <!-- latest jquery-->
-    <script src="{{asset('/')}}assets/backend/jquery-3.2.1.min.js.download"></script>
-    <!-- Bootstrap js-->
-    <script src="{{asset('/')}}assets/backend/bootstrap.bundle.min.js.download"></script>
-    <!-- Theme js-->
-    <script src="{{asset('/')}}assets/backend/script.js.download" defer=""></script>
 
-    <!-- Scripts -->
-    <script type="module" src="{{asset('/')}}assets/backend/client"></script>
-    <link rel="stylesheet" href="{{asset('/')}}assets/backend/app.scss">
-    <script type="module" src="{{asset('/')}}assets/backend/app.js.download"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/backend/jquery-3.2.1.min.js.download"></script>
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="/assets/backend/bootstrap.bundle.min.js.download"></script>
+    <!-- Theme js-->
+    <script src="/assets/backend/script.js.download" defer=""></script>
+
+    {{-- <script type="module" src="/assets/backend/client"></script> --}}
+    <link rel="stylesheet" href="/assets/backend/app.scss">
+    {{-- <script type="module" src="/assets/backend/app.js.download"></script> --}}
+
+    {{-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/notify.js/2.0.0/notify.min.js"></script> --}}
+
+
     <style>
         .swal2-popup.swal2-toast {
             box-sizing: border-box;
@@ -1397,73 +1405,66 @@
         }
     </style>
     <script referrerpolicy="origin" type="application/javascript" id="tiny-script_57932211011697630123463"
-        src="{{asset('/')}}assets/backend/tinymce.min.js.download"></script>
+        src="/assets/backend/tinymce.min.js.download"></script>
+
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+    </script>
+
+
+
 </head>
 
-<body main-theme-layout="main-theme-layout-4"
-    class="pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done pace-done "
-    cz-shortcut-listen="true">
-    <div class="pace pace-inactive">
-        <div class="pace-progress" data-progress-text="100%" data-progress="99"
-            style="transform: translate3d(100%, 0px, 0px);">
-            <div class="pace-progress-inner"></div>
-        </div>
-        <div class="pace-activity"></div>
-    </div>
+<body main-theme-layout="main-theme-layout-4">
 
 
+    @if (session()->has('success'))
+        <script type="text/javascript">
+            Toast.fire({
+                icon: "success",
+                title: "success"
+            });
+        </script>
+    @endif
+    @if (session()->get('errors'))
+        <script type="text/javascript">
+            Toast.fire({
+                icon: "error",
+                title: "check errors below"
+            });
+        </script>
+    @endif
 
     <!--page-wrapper Start-->
     <div class="page-wrapper" id="app" data-v-app="">
         <div>
-            <div class="page-main-header"><!--Page Header Start-->
-                <div class="main-header-left" semilight-bg-color="bg-default-light-colo">
-                    <div class="logo-wrapper"><a href="{{asset('/')}}http://127.0.0.1:8000/dashboard#/admin" id="logo"
-                            class="d-flex align-items-end gap-1"><img src="{{asset('/')}}assets/backend/logo.png"
-                                class="image-dark" alt=""><img src="{{asset('/')}}assets/backend/logo.png" class="image-light"
-                                alt=""><span class="text-white h4">Dashboard</span></a></div>
+            @include('admin.layouts.top_header')
+            <!--Page Body Start-->
+            <div class="page-body-wrapper">
+                <div>
+                    @include('admin.layouts.left_sidebar')
+                    <div class="page-body">
+
+                        @yield('content')
+
+                    </div>
                 </div>
-                <div class="main-header-right row" header-bg-color="bg-default-light-colo">
-                    <div class="mobile-sidebar col-1 ps-0">
-                        <div class="text-start switch-sm"><label class="switch"><input type="checkbox"
-                                    id="sidebar-toggle" checked="checked"><span class="switch-state"></span></label>
-                        </div>
-                    </div>
-                    <div class="nav-right col">
-                        <ul class="nav-menus"><!-- &lt;li&gt;
-                            &lt;form class=&quot;form-inline search-form&quot;&gt;
-                                &lt;div class=&quot;form-group&quot;&gt;
-                                    &lt;label class=&quot;sr-only&quot;&gt;Email&lt;/label&gt;
-                                    &lt;input type=&quot;search&quot; class=&quot;form-control-plaintext&quot; placeholder=&quot;Search..&quot;&gt;
-                                    &lt;span class=&quot;d-sm-none mobile-search&quot;&gt;
-                                    &lt;/span&gt;
-                                &lt;/div&gt;
-                            &lt;/form&gt;
-                        &lt;/li&gt; --><!-- &lt;li&gt;
-                        &lt;a href=&quot;#&quot; @click.prevent=&quot;()=&gt;toggleFullScreen()&quot; class=&quot;text-dark&quot;&gt;
-                            &lt;img class=&quot;align-self-center pull-right me-2&quot; src=&quot;/backend/assets/browser.png&quot;
-                                alt=&quot;header-browser&quot;&gt;
-                        &lt;/a&gt;
-                    &lt;/li&gt; -->
-                            <li class="onhover-dropdown">
-                                <div class="d-flex align-items-center"><img
-                                        class="align-self-center pull-right flex-shrink-0 me-2"
-                                        src="{{asset('/')}}assets/backend/user.png" alt="header-user">
-                                    <div>
-                                        <h6 class="m-0 txt-dark f-16"> My Account <i
-                                                class="fa fa-angle-down pull-right ms-2"></i></h6>
-                                    </div>
-                                </div>
-                                <ul class="profile-dropdown onhover-show-div p-20">
-                                    <li><a href="http://127.0.0.1:8000/dashboard#"><i class="icon-user"></i> Edit
-                                            Profile </a></li>
-                                    <li><a href="http://127.0.0.1:8000/dashboard#"><i class="icon-power-off"></i> Logout
-                                        </a></li>
-                                </ul>
-                            </li>
-                        </ul><!-- &lt;div class=&quot;mobile-toggle&quot;&gt;
-                    &lt;i class=&quot;icon-more&quot;&gt;&lt;/i&gt;
-                &lt;/div&gt; -->
-                    </div>
-                </div><!--Page Header Ends-->
             </div>
+            <!--Page Body Ends-->
+        </div>
+    </div>
+    <!--page-wrapper Ends-->
+</body>
+
+
+</html>
