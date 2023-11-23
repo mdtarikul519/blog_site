@@ -31,6 +31,13 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::group(['prefix'=>'user-role'], function(){
   Route::get('/create', [UserRoleController::class, 'create'])->name('admin.user_role.create');
   Route::post('/store', [UserRoleController::class, 'store'])->name('admin.user_role.store');
+  Route::get('/all', [UserRoleController::class, 'all_user'])->name('admin.user_role.all');
+  Route::get('/edit', [UserRoleController::class, 'edit'])->name('admin.user_role.edit');
+  Route::get('/update', [UserRoleController::class, 'update'])->name('admin.user_role.update');
+  Route::get('/delete', [UserRoleController::class, 'delete'])->name('admin.user_role.delete');
+
+
+
 });
 
 Route::group(['prefix'=>'user'], function(){

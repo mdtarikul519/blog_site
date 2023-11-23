@@ -14,6 +14,8 @@
             </a>
             <ul class="sidebar-submenu">
                 <li><a href="{{route('admin.user_role.create')}}"><i class="fa fa-angle-right"></i>create</a></li>
+                <li><a href="{{route('admin.user_role.all')}}"><i class="fa fa-angle-right"></i>all</a></li>
+
               
             </ul>
         </li>

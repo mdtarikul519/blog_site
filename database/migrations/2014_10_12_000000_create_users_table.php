@@ -27,6 +27,14 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('role_id')->nullable();
+          
+        });
     }
 
     /**
@@ -35,5 +43,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('role_user');
+
     }
 };

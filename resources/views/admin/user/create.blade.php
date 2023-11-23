@@ -12,6 +12,20 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    <div class="form-group col-md-6">
+                        <label for=""> User Roll </label>
+                        <select class="form-select">
+                             @foreach ($user_roles as $role)
+                                <option value="{{$role->id}}">{{$role->title}}</option>
+                            @endforeach 
+                        </select>
+                        @error('name')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
                     <div class="form-group col-md-6">
                         <label for=""> Name </label>
                         <div class="mt-1 mb-3"><input type="text" name="name" class="form-control mb-1" /></div>
