@@ -33,12 +33,22 @@ class UserController extends Controller
     $data->password = $request->password;
 
     if($request->hasFile('image')){
-      $data->image = Storage::put('/user_uploads', $request->file('image'));
+      $data->image = Storage::put('/user_uploads', request()->file('image'));
     }
-
+   //  if($request->hasFile('photo')){
+   //    $data->photo = Storage::put('/user_uploads', request()->file('photo'));
+   //    }
     $data->save();
 
    return redirect()->back()->with('success', 'data inserted sucessfully');
 
    }
+
+   public function all(){
+      $alldata = User::get();
+
+      return view('admin.user.index', compact('alldata'));
+
+   }
+
 }

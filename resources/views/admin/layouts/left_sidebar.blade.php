@@ -27,6 +27,7 @@
             </a>
             <ul class="sidebar-submenu">
                 <li><a href="{{route('admin.user.create')}}"><i class="fa fa-angle-right"></i>create</a></li>
+                <li><a href="{{route('admin.user.all')}}"><i class="fa fa-angle-right"></i>All</a></li>
               
             </ul>
         </li>

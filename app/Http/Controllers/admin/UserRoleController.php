@@ -25,12 +25,39 @@ class UserRoleController extends Controller
         $data->title = $request->title;
         $data->serial = $request->serial;
         $data->save();
-        return redirect()->back()->with('success','role insert successfully');
+        return redirect()->back()->with('success', 'role insert successfully');
     }
 
     public function all_user()
     {
-        $alldata = UserRole::get();       
-        return view('admin.userRole.index',compact('alldata'));
+        $alldata = UserRole::get();
+        return view('admin.userRole.index', compact('alldata'));
+    }
+
+    public function edit($id)
+    {
+        $editdata = UserRole::find($id);
+        return view('admin.userRole.edit', compact('editdata'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $data = UserRole::find($id);
+        $data->title = $request->title;
+        $data->serial = $request->serial;
+
+        $data->update();
+        return redirect()->route('admin.user_role.all')->with('success');
+    }
+
+
+    public function delete($id)
+    {
+
+        $post = UserRole::find($id);
+        $post->delete();
+        return redirect()->route('admin.user_role.all');
+          
     }
 }

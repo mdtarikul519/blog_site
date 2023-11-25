@@ -41,10 +41,11 @@
     <link rel="stylesheet" type="text/css" href="/assets/backend/custom.css">
 
     <!-- latest jquery-->
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/assets/backend/jquery-3.2.1.min.js.download"></script>
-
+    {{-- sweet alert mahabub code --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
@@ -1406,6 +1407,7 @@
     </style>
     <script referrerpolicy="origin" type="application/javascript" id="tiny-script_57932211011697630123463"
         src="/assets/backend/tinymce.min.js.download"></script>
+
 
     <script>
         const Toast = Swal.mixin({
