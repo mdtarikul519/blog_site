@@ -33,6 +33,18 @@
         </li>
 
 
+        <li class="active">
+            <a href="javascript:void(0)" class="sidebar-header">
+                <i class="icon-desktop"></i><span>Blog</span>
+                <i class="fa fa-angle-right pull-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li><a href="{{route('admin.blog.create')}}"><i class="fa fa-angle-right"></i>create</a></li>
+                <li><a href="{{route('admin.blog.all')}}"><i class="fa fa-angle-right"></i>All</a></li>
+              
+            </ul>
+        </li>
+
 
     </ul>
     

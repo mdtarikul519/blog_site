@@ -1438,14 +1438,14 @@
             });
         </script>
     @endif
-    @if (session()->get('errors'))
+     {{-- @if (session()->get('errors'))
         <script type="text/javascript">
             Toast.fire({
                 icon: "error",
                 title: "check errors below"
             });
-        </script>
-    @endif
+        </script> 
+    @endif  --}}
 
     <!--page-wrapper Start-->
     <div class="page-wrapper" id="app" data-v-app="">

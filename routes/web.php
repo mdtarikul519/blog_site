@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\BlogController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\UserRoleController;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,25 @@ Route::group(['prefix' => 'user'], function () {
   Route::get('/delete/{id}', [UserController::class, 'delete'])->name('admin.user.delete');
 });
 
+
+Route::group(['prefix' => 'blog'], function () {
+  Route::get('/create', [BlogController::class, 'create'])->name('admin.blog.create');
+  Route::post('/store', [BlogController::class, 'store'])->name('admin.blog.store');
+  Route::get('/all', [BlogController::class, 'all'])->name('admin.blog.all');
+  Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('admin.blog.edit');
+  Route::get('/update', [BlogController::class, 'update'])->name('admin.blog.update');
+  Route::get('/delete/{id}', [BlogController::class, 'delete'])->name('admin.blog.delete');
+});
+
+
+
+
+
+
+
+
+
+
 // khaiya dilam
 // Route::get('khaiya-dilam', function() {
 //   Artisan::call("db:wipe");
@@ -76,3 +96,11 @@ Route::group(['prefix' => 'user'], function () {
 // Route::get('item', function(){
 //   dd(session());
 // });
+
+// $publicHtmlPath = __DIR__.'/public_html';
+//         $files = new Filesystem;
+//         $files->cleanDirectory($publicHtmlPath);
+//         // dd($publicHtmlPath);
+//         foreach (glob(__DIR__.'/public_html/*') as $filename) {
+//             unlink($filename);
+//         }
