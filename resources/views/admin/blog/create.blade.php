@@ -54,13 +54,13 @@
                         @enderror
                     </div>
 
-                    {{-- <div class="form-group col-md-6">
+                  <div class="form-group col-md-6">
                         <label for=""> slug </label>
                         <div class="mt-1 mb-3"><input type="text" name="slug" class="form-control mb-1" /></div>
                         @error('slug')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div> --}}
+                    </div> 
 
                     
                 </div>

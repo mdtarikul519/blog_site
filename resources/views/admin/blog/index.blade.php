@@ -5,11 +5,11 @@
             <div class="card rounded-none">
                 <div class="card-header pt-3 pb-1 d-flex justify-content-between align-items-center">
                     <div>
-                        <h4 class="bn" style="font-size: 22px !important;">All User Roll</h4>
+                        <h4 class="bn" style="font-size: 22px !important;">All Blog</h4>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <div class="ps-3 d-flex gap-2"><a href="#/admin/blog/category" class="btn btn-sm btn-info"> All user
-                                Roll </a><a href="#/admin/blog/create" class="btn btn-sm btn-info"> Create </a></div>
+                        <div class="ps-3 d-flex gap-2"><a href="#/admin/blog/category" class="btn btn-sm btn-info">
+                               </a><a href="#/admin/blog/create" class="btn btn-sm btn-info">Blog Create </a></div>
                     </div>
                 </div>
                 <div class="card-body px-4 py-2 form_area custom_scroll">
@@ -18,11 +18,11 @@
                             <thead>
                                 <tr>
                                     <th style="width: 50px;">SL</th>
-                                    <th style="width: 50px;">User Roll</th>
-                                    <th style="width: 50px;">Name</th>
-                                    <th style="width: 50px;">Email</th>
-                                    <th style="width: 50px;">Phon Number</th>
-                                    <th style="width: 50px;">Image</th>
+                                    <th style="width: 50px;">Title</th>
+                                    <th style="width: 50px;">short_description</th>
+                                    <th style="width: 50px;">description</th>
+                                    <th style="width: 50px;">slug</th>
+                                    <th style="width: 50px;">image</th>   
                                     <th style="width: 80px;">Action</th>
 
 
@@ -32,20 +32,23 @@
                                 @foreach ($alldata as $item)
                                     <tr>
                                         <td>{{ $item ->id }}</td>
-                                        <td>{{ $item->role_id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->phone_number }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->short_description }}</td>
+                                        <td>{{ $item->description }}</td>
+                                        <td>{{ $item->slug }}</td>
                                   
                                        <td>
-                                        <img src="/{{ $item->image }}" height="100" width="100" alt="Image">
+                                        @if($item->image){
+                                            <img src="/{{ $item->image }}" height="100" width="100" alt="Image">
+                                        }
+                                       @endif
                                        </td> 
 
                                         <td class="text-end">
                                             <div class="d-flex justify-content-end gap-3">
-                                                <a href="{{ route('admin.user_role.edit', $item->id) }}"
+                                                <a href="{{ route('admin.blog.edit', $item->id) }}"
                                                     class="btn btn-sm btn-outline-info"> Edit </a>
-                                                <a href="{{ route('admin.user_role.delete', $item->id) }}"
+                                                <a href="{{ route('admin.blog.delete', $item->id) }}"
                                                     class="btn btn-sm btn-outline-danger js-submit-confirm">
                                                     Delete
                                                 </a>

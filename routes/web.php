@@ -54,7 +54,7 @@ Route::group(['prefix' => 'blog'], function () {
   Route::post('/store', [BlogController::class, 'store'])->name('admin.blog.store');
   Route::get('/all', [BlogController::class, 'all'])->name('admin.blog.all');
   Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('admin.blog.edit');
-  Route::get('/update', [BlogController::class, 'update'])->name('admin.blog.update');
+  Route::post('/update/{id}', [BlogController::class, 'update'])->name('admin.blog.update');
   Route::get('/delete/{id}', [BlogController::class, 'delete'])->name('admin.blog.delete');
 });
 
